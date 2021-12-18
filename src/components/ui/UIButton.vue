@@ -10,6 +10,7 @@ defineProps<PropsType>();
 <template>
   <button
     class="ui-button"
+    :disabled="isDisabled"
     :class="{
       'ui-button--disabled': isDisabled,
     }"
@@ -21,11 +22,11 @@ defineProps<PropsType>();
 
 <style lang="scss">
 .ui-button {
-  @apply py-2 px-4 font-semibold rounded-lg shadow-lg;
-  @apply text-black text-xl bg-primary-500 hover:bg-primary-700;
+  @apply py-2 px-4 font-semibold shadow-lg;
+  @apply text-black text-xl bg-primary-500 hover:bg-primary-600;
 
   &--disabled {
-    @apply bg-primary-700;
+    @apply bg-primary-600;
   }
 }
 </style>

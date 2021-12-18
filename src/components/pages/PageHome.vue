@@ -6,7 +6,6 @@ const estimatives = [1, 2, 3, 5, 8, 13, 21, 34];
 
 const estimative = ref('0');
 const isGuessing = ref(false);
-const count = ref(0);
 
 function generateRandomEstimative(): string {
   const random = Math.floor(Math.random() * estimatives.length);
@@ -43,14 +42,14 @@ async function onGuessButtonClick() {
 
 <template>
   <div class="page-home">
-    <h1>Deixe me ajudá-lo com suas estimativas!</h1>
+    <h3>Deixe me ajudá-lo com suas estimativas!</h3>
     <div
-      class="estimative"
+      class="estimative font-fancy"
       :class="{
         'estimative--disabled': isGuessing,
       }"
     >
-      <h2>{{ estimative }}</h2>
+      <span>{{ estimative }}</span>
     </div>
     <UIButton
       label="Adivinhar"
@@ -66,17 +65,11 @@ async function onGuessButtonClick() {
   @apply text-center;
 
   .estimative {
+    @apply text-9xl pt-8;
+
     &--disabled {
       @apply text-zinc-500;
     }
-  }
-
-  h1 {
-    @apply text-2xl;
-  }
-  h2 {
-    @apply text-9xl;
-    line-height: inherit;
   }
 }
 </style>

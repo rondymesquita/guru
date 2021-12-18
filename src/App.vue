@@ -3,9 +3,11 @@ import Header from './components/ui/Header.vue';
 </script>
 
 <template>
-  <main>
+  <main class="main">
     <Header />
-    <router-view></router-view>
+    <section class="page">
+      <router-view></router-view>
+    </section>
   </main>
 </template>
 
@@ -23,6 +25,18 @@ import Header from './components/ui/Header.vue';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
+  .font-fancy {
+    font-family: 'Galada', Avenir, Helvetica, Arial, sans-serif;
+  }
+
+  .main {
+    @apply text-center;
+
+    .page {
+      @apply py-8;
+    }
+  }
+
   h1,
   h2,
   h3,
@@ -30,6 +44,20 @@ import Header from './components/ui/Header.vue';
   h5,
   h6 {
     font-family: 'Galada', Avenir, Helvetica, Arial, sans-serif;
+    line-height: inherit;
+  }
+
+  h1 {
+    @apply text-5xl;
+  }
+  h2 {
+    @apply text-4xl;
+  }
+  h3 {
+    @apply text-3xl;
+  }
+  h3 {
+    @apply text-2xl;
   }
 }
 </style>
