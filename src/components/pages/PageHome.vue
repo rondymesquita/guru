@@ -2,24 +2,42 @@
 import { ref, onMounted } from 'vue';
 import UIButton from '../ui/UIButton.vue';
 
-const estimatives = [1, 2, 3, 5, 8, 13, 21, 34];
-
+const estimatives = [1, 2, 3, 5, 8, 13, 21];
+const phrases: any = {
+  1: [
+    'Bastante simples, pra quem vem pedir minha ajuda.',
+    'Você está de brincadeira comigo, só pode.',
+  ],
+  2: ['Eu nem criaria um card pra essa', 'Eu priorizaria essa pra ontem'],
+  3: ['Essa é muito fácil. Já deveria ter feito.'],
+  5: ['Se juntar 2 devs, vocês conseguem fazer logo depois da Planning.'],
+  8: ['Esse, dá pra fazer no intervalo do almoço'],
+  13: ['Treze é meu número da sorte (Ou do azar)', 'Fonte: Confia!'],
+  21: ['O cliente vai adorar essa estimativa', 'O PO vai amar essa estimativa'],
+};
 const estimative = ref('0');
+const estimativePhrase = ref('');
 const isGuessing = ref(false);
 
-function generateRandomEstimative(): string {
+function generateRandomEstimative(): number {
   const random = Math.floor(Math.random() * estimatives.length);
-  const value = estimatives[random].toString();
-  if (value === estimative.value) {
+  const value = estimatives[random];
+  if (value.toString() === estimative.value) {
     return generateRandomEstimative();
   }
   return value;
 }
 
+function generatePhraseFromEstimative(estimative: number): string {
+  const estimativePhrases = phrases[estimative];
+  const random = Math.floor(Math.random() * estimativePhrases.length);
+  return estimativePhrases[random];
+}
+
 function animateEstimative() {
   return new Promise((resolve) => {
     const timer = setInterval(() => {
-      estimative.value = generateRandomEstimative();
+      estimative.value = generateRandomEstimative().toString();
     }, 100);
 
     setTimeout(() => {
@@ -31,11 +49,13 @@ function animateEstimative() {
 
 async function onGuessButtonClick() {
   isGuessing.value = true;
+  estimativePhrase.value = '';
   await animateEstimative();
 
   const randomEstimative = generateRandomEstimative();
-  estimative.value = randomEstimative;
 
+  estimative.value = randomEstimative.toString();
+  estimativePhrase.value = generatePhraseFromEstimative(randomEstimative);
   isGuessing.value = false;
 }
 </script>
@@ -51,6 +71,9 @@ async function onGuessButtonClick() {
     >
       <span>{{ estimative }}</span>
     </div>
+    <p v-if="estimativePhrase" class="estimative-phrase">
+      "{{ estimativePhrase }}"
+    </p>
     <UIButton
       label="Adivinhar"
       disabled-label="Adivinhando..."
@@ -70,6 +93,9 @@ async function onGuessButtonClick() {
     &--disabled {
       @apply text-zinc-500;
     }
+  }
+  .estimative-phrase {
+    @apply py-2 text-xl italic;
   }
 }
 </style>
