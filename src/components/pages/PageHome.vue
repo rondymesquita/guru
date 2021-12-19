@@ -8,12 +8,15 @@ const phrases: any = {
     'Bastante simples, pra quem vem pedir minha ajuda.',
     'Você está de brincadeira comigo, só pode.',
   ],
-  2: ['Eu nem criaria um card pra essa', 'Eu priorizaria essa pra ontem'],
+  2: ['Eu nem criaria um card pra essa', 'Eu priorizaria essa pra ontem.'],
   3: ['Essa é muito fácil. Já deveria ter feito.'],
   5: ['Se juntar 2 devs, vocês conseguem fazer logo depois da Planning.'],
-  8: ['Esse, dá pra fazer no intervalo do almoço'],
+  8: ['Esse, dá pra fazer no intervalo do almoço.'],
   13: ['Treze é meu número da sorte (Ou do azar)', 'Fonte: Confia!'],
-  21: ['O cliente vai adorar essa estimativa', 'O PO vai amar essa estimativa'],
+  21: [
+    'O cliente vai adorar essa estimativa',
+    'O PO vai amar essa estimativa.',
+  ],
 };
 const estimative = ref('0');
 const estimativePhrase = ref('');
@@ -55,14 +58,16 @@ async function onGuessButtonClick() {
   const randomEstimative = generateRandomEstimative();
 
   estimative.value = randomEstimative.toString();
-  estimativePhrase.value = generatePhraseFromEstimative(randomEstimative);
+  estimativePhrase.value = `"${generatePhraseFromEstimative(
+    randomEstimative
+  )}"`;
   isGuessing.value = false;
 }
 </script>
 
 <template>
   <div class="page-home">
-    <h3>Deixe me ajudá-lo com suas estimativas!</h3>
+    <h3>Deixe-me ajudá-lo com suas estimativas!</h3>
     <div
       class="estimative font-fancy"
       :class="{
@@ -71,8 +76,8 @@ async function onGuessButtonClick() {
     >
       <span>{{ estimative }}</span>
     </div>
-    <p v-if="estimativePhrase" class="estimative-phrase">
-      "{{ estimativePhrase }}"
+    <p class="estimative-phrase">
+      {{ estimativePhrase }}
     </p>
     <UIButton
       label="Adivinhar"
@@ -96,6 +101,7 @@ async function onGuessButtonClick() {
   }
   .estimative-phrase {
     @apply py-2 text-xl italic;
+    min-height: 50px;
   }
 }
 </style>

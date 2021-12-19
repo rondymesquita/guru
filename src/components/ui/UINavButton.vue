@@ -19,8 +19,9 @@ defineProps<PropsType>();
 
 <style lang="scss">
 .ui-nav-button {
-  @apply py-2 px-4 font-semibold text-black text-xl;
+  @apply py-2 px-4 font-semibold text-zinc-800 text-2xl;
   @apply bg-primary-500 hover:bg-primary-700;
+  font-variant: small-caps;
 
   &--active {
     @apply bg-primary-600;
