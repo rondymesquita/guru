@@ -19,9 +19,7 @@ import Header from './components/ui/Header.vue';
   @apply bg-white;
 
   /* Dark */
-  @apply text-white dark:bg-zinc-800;
-
-  background: linear-gradient(to bottom, #302e2e 0%, #000000 100%);
+  @apply text-white bg-gradient-to-b from-zinc-800 to-neutral-900;
 
   font-family: 'Lora', Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -35,7 +33,7 @@ import Header from './components/ui/Header.vue';
     @apply text-center;
 
     .page {
-      @apply py-8;
+      // @apply py-8;
     }
   }
 

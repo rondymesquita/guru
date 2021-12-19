@@ -27,6 +27,7 @@ import UINavButton from '../ui/UINavButton.vue';
 
 <style lang="scss">
 nav {
-  @apply flex flex-row justify-center py-4;
+  @apply flex flex-row justify-center pt-4;
+  // @apply -z-0;
 }
 </style>
