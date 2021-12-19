@@ -34,8 +34,8 @@ defineProps<PropsType>();
     display: inline-block;
 
     .ui-nav-button {
-      @apply font-semibold text-2xl;
-      @apply py-1 px-8 rounded-md;
+      @apply font-semibold text-xl;
+      @apply py-1 px-4 rounded-md;
       @apply bg-gradient-to-b from-yellow-600  to-yellow-800;
       @apply text-orange-200;
       @apply border-2 border-zinc-800;

@@ -6,15 +6,15 @@ import Header from './components/ui/Header.vue';
   <main class="main">
     <Header />
     <section class="page">
-      <router-view></router-view>
+      <transition name="fade">
+        <router-view></router-view>
+      </transition>
     </section>
   </main>
 </template>
 
 <style lang="scss">
 #app {
-  @apply container mx-auto min-h-screen py-4 px-10;
-
   /* Normal */
   @apply bg-white;
 
@@ -31,6 +31,7 @@ import Header from './components/ui/Header.vue';
 
   .main {
     @apply text-center;
+    @apply container mx-auto min-h-screen py-2 px-4;
 
     .page {
       // @apply py-8;
@@ -48,16 +49,16 @@ import Header from './components/ui/Header.vue';
   }
 
   h1 {
-    @apply text-5xl;
-  }
-  h2 {
     @apply text-4xl;
   }
-  h3 {
+  h2 {
     @apply text-3xl;
   }
   h3 {
     @apply text-2xl;
+  }
+  h3 {
+    @apply text-xl;
   }
 }
 </style>

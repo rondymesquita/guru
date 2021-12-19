@@ -37,7 +37,7 @@ defineProps<PropsType>();
 
     .ui-button {
       @apply font-semibold;
-      @apply py-1 px-8 rounded-md;
+      @apply py-1 px-4 rounded-md;
       @apply text-zinc-100 text-3xl;
       @apply bg-gradient-to-b from-yellow-500 via-amber-500 to-yellow-800;
       @apply border-2 border-zinc-800;

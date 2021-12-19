@@ -101,7 +101,7 @@ async function onGuessButtonClick() {
   @apply z-10;
 
   .estimative {
-    @apply text-9xl pt-8;
+    @apply text-9xl pt-2;
 
     &--disabled {
       @apply text-zinc-500;
