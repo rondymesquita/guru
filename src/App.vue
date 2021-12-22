@@ -21,13 +21,9 @@ import Header from './components/ui/Header.vue';
   /* Dark */
   @apply text-white bg-gradient-to-b from-zinc-800 to-neutral-900;
 
-  font-family: 'Lora', Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Merriweather Sans', Arial;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  .font-fancy {
-    font-family: 'Lora', Avenir, Helvetica, Arial, sans-serif;
-  }
 
   .main {
     @apply text-center;
@@ -44,7 +40,7 @@ import Header from './components/ui/Header.vue';
   h4,
   h5,
   h6 {
-    font-family: 'Lora', Avenir, Helvetica, Arial, sans-serif;
+    font-family: 'Merriweather Sans', Arial;
     line-height: inherit;
   }
 

@@ -91,13 +91,7 @@ async function onGuessButtonClick() {
 <style lang="scss">
 .page-home {
   @apply text-center;
-  @apply py-4 mt-2 rounded-lg;
-  // @apply bg-zinc-800;
-  @apply bg-gradient-to-b from-zinc-800  to-zinc-900;
-  @apply border-2 border-zinc-800;
-  // @apply shadow-red-500 shadow-md;
-  box-shadow: inset 1px 1px 1px #a1a1aa, inset -1px -1px 1px #a1a1aa,
-    0px -1px 4px #080808;
+  @apply py-4 mt-2;
   @apply z-10;
 
   .estimative {
@@ -109,7 +103,7 @@ async function onGuessButtonClick() {
   }
   .estimative-phrase {
     @apply py-2 text-xl italic;
-    min-height: 50px;
+    min-height: 80px;
   }
 }
 </style>
