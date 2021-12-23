@@ -85,7 +85,7 @@ async function onGuessButtonClick() {
       <p>{{ estimativePhrase }}</p>
     </UISpeechBubble>
     <div class="flex flex-col p-4">
-      <Chicken />
+      <Chicken :is-animated="isGuessing" />
     </div>
     <UIButton
       label="Adivinhar"
