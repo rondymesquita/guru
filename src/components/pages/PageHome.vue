@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import UIButton from '../ui/UIButton.vue';
+import Chicken from '../ui/Chicken.vue';
+import UISpeechBubble from '../ui/UISpeechBubble.vue';
 
 const estimatives = [1, 2, 3, 5, 8, 13, 21];
 const phrases: any = {
@@ -19,7 +21,7 @@ const phrases: any = {
   ],
 };
 const estimative = ref('0');
-const estimativePhrase = ref('');
+const estimativePhrase = ref('Deixe-me ajudá-lo com suas estimativas!');
 const isGuessing = ref(false);
 
 function generateRandomEstimative(): number {
@@ -52,7 +54,7 @@ function animateEstimative() {
 
 async function onGuessButtonClick() {
   isGuessing.value = true;
-  estimativePhrase.value = '';
+  estimativePhrase.value = '...';
   await animateEstimative();
 
   const randomEstimative = generateRandomEstimative();
@@ -67,18 +69,24 @@ async function onGuessButtonClick() {
 
 <template>
   <div class="page-home">
-    <h3>Deixe-me ajudá-lo com suas estimativas!</h3>
+    <!-- <h3>Deixe-me ajudá-lo com suas estimativas!</h3> -->
     <div
       class="estimative font-fancy"
       :class="{
         'estimative--disabled': isGuessing,
       }"
     >
-      <span>{{ estimative }}</span>
+      <transition name="fade">
+        <span>{{ estimative }}</span>
+      </transition>
     </div>
-    <p class="estimative-phrase">
-      {{ estimativePhrase }}
-    </p>
+    <UISpeechBubble>
+      <!-- <p class="estimative-phrase"> -->
+      <p>{{ estimativePhrase }}</p>
+    </UISpeechBubble>
+    <div class="flex flex-col p-4">
+      <Chicken />
+    </div>
     <UIButton
       label="Adivinhar"
       disabled-label="Adivinhando..."
@@ -90,6 +98,7 @@ async function onGuessButtonClick() {
 
 <style lang="scss">
 .page-home {
+  @apply flex flex-col items-center;
   @apply text-center;
   @apply py-4 mt-2;
   @apply z-10;

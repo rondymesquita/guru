@@ -7,7 +7,6 @@ import Navigation from '../ui/Navigation.vue';
   <header>
     <h1>Chicken Guru</h1>
     <span class="pb-4">Versão: {{ version }}</span>
-    <img class="" src="../../assets/chicken-white.png" />
 
     <Navigation />
   </header>
